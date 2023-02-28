@@ -1,27 +1,45 @@
+const gridContainer = document.querySelector(".grid-container");
+
 function createGrid(rows, cols) {
-    const gridContainer = document.querySelector(".grid-container");
     gridContainer.style.setProperty("--grid-rows", rows);
     gridContainer.style.setProperty("--grid-cols", cols);
 
     for (let i = 1; i <= (rows * cols); i++) {
         let cell = document.createElement("div");
-        cell.className = "cell";
+        cell.classList.add("cell");
         cell.setAttribute("value", i);
+        cell.addEventListener("mouseenter", colorCell);
         gridContainer.appendChild(cell);
     };
 };
 
-function colorCell(e) {
-    e.currentTarget.style.cssText = `
-    background-color: black;`;
+function removeGrid(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    };
 }
 
-createGrid(16, 16);
+function selectGridSize() {
+    let sizeInput = prompt("To create a new grid, please enter the number of cells you wish to see on one side of the grid. (max: 100)", "");
+    
+    if (sizeInput > 100) {
+        alert("Error: Cannot input a number greater than 100.");
+    } else {
+        removeGrid(gridContainer);
+        createGrid(sizeInput, sizeInput);
 
-let cellDiv = document.querySelector(".cell");
+        // --- OTHER OPTION FOR INCLUDING THE MOUSEENTER LISTENER ---
+        
+        // const cellDivAll = document.querySelectorAll("div.cell");
+        // cellDivAll.forEach((cellDiv) => {
+        //     cellDiv.addEventListener("mouseenter", colorCell);
+        // });
+    }
+}
 
-let cellDivAll = document.querySelectorAll(".cell");
+const gridSizeBtn = document.querySelector(".grid-size-prompt");
+gridSizeBtn.addEventListener("click", selectGridSize);
 
-cellDivAll.forEach((cellDiv) => {
-    cellDiv.addEventListener("mouseover", colorCell);
-});
+function colorCell(e) {
+    e.target.style.backgroundColor = "black";
+}
