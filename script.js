@@ -3,7 +3,9 @@ const gridContainer = document.querySelector(".grid-container");
 function createGrid(rows, cols) {
     gridContainer.style.setProperty("--grid-rows", rows);
     gridContainer.style.setProperty("--grid-cols", cols);
-
+    gridContainer.style.border = "1px solid var(--white)";
+    gridContainer.style.boxShadow = "0px 0px 20px 5px var(--white)";
+    
     for (let i = 1; i <= (rows * cols); i++) {
         let cell = document.createElement("div");
         cell.classList.add("cell");
@@ -12,6 +14,11 @@ function createGrid(rows, cols) {
         gridContainer.appendChild(cell);
     };
 };
+
+function colorCell(e) {
+    let color = document.getElementById("colorpicker");
+    e.target.style.backgroundColor = color.value;
+}
 
 function removeGrid(parent) {
     while (parent.firstChild) {
@@ -29,7 +36,7 @@ function selectGridSize() {
         createGrid(sizeInput, sizeInput);
 
         // --- OTHER OPTION FOR INCLUDING THE MOUSEENTER LISTENER ---
-        
+
         // const cellDivAll = document.querySelectorAll("div.cell");
         // cellDivAll.forEach((cellDiv) => {
         //     cellDiv.addEventListener("mouseenter", colorCell);
@@ -39,7 +46,3 @@ function selectGridSize() {
 
 const gridSizeBtn = document.querySelector(".grid-size-prompt");
 gridSizeBtn.addEventListener("click", selectGridSize);
-
-function colorCell(e) {
-    e.target.style.backgroundColor = "black";
-}

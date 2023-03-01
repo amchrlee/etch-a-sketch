@@ -2,26 +2,109 @@
     --grid-rows: 1;
     --grid-cols: 1;
     --aspect-ratio: 1/1;
+    --theme-dark-blue: #0d1821;
+    --theme-grey-blue: #344966;
+    --theme-light-blue: #b4cded;
+    --theme-sage: #bfcc94;
+    --theme-white: #f0f4ef;
+    --red: #ff0000;
+    --orange: #ff7f00;
+    --yellow: #ffff00;
+    --green: #00ff00;
+    --blue: #0000ff;
+    --indigo: #4b0082;
+    --violet: #9400D3;
+    --white: #ffffff;
+    --black: #000;
 }
 
-button.grid-size-prompt {
-    margin: 2em auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
+html {
+    background-color: var(--theme-dark-blue);
+    color: var(--theme-white);
+    box-sizing: border-box;
 }
 
 h1 {
+    margin: 0;
+    padding: 0.2em;
     text-align: center;
+    font-family: 'Righteous', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3rem;
+}
+
+.draw-options {
+    max-width: 50vw;
+    margin: 1.2em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: stretch;
+    gap: 0.5em;
+    border: 2px solid var(--theme-white);
+    border-radius: 25px;
+}
+
+.draw-options-title {
+    padding: 0.5em;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    min-width: 6em;
+    text-align: center;
+}
+
+.draw-btn {
+    margin: 0.5em;
+    padding: 0.25em 0.75em;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    min-width: 6em;
+    background-color: var(--theme-light-blue);
+}
+
+.grid-size {
+    text-align: center;
+    flex: 1;
+}
+
+.color-selection {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+}
+
+#colorpicker {
+    min-width: 6em;
+}
+
+button.rainbow {
+    text-align: center;
+    color: black;
+    background: linear-gradient(to right top,
+        var(--red),
+        var(--orange),
+        var(--yellow),
+        var(--green),
+        var(--blue),
+        var(--indigo),
+        var(--violet));
+    -webkit-text-fill-color: black;
+}
+
+.opacity {
+    text-align: center;
+    flex: 1;
 }
 
 .grid-container {
     display: grid;
     grid-template: repeat(var(--grid-rows), 1fr) / repeat(var(--grid-cols), 1fr);
     margin: auto;
-    border: 1px solid;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 550px;
+    max-height: 550px;
 }
 
 .cell {

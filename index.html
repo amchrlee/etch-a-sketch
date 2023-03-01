@@ -5,11 +5,27 @@
         <title>Etch-A-Sketch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Righteous&display=swap" rel="stylesheet">
         <script src="script.js" defer></script>
     </head>
     <body>
         <h1>Etch-A-Sketch</h1>
-        <button class="grid-size-prompt">Select Grid Size</button>
+        <div class="draw-options">
+            <div class="grid-size">
+                <div class="draw-options-title">Grid Size</div>
+                <button class="draw-btn grid-size-prompt">SELECT HERE</button>
+            </div>
+            <div class="color-selection">
+                <div class="draw-options-title">Color</div>
+                <input type="color" class="colorpicker one-color" id="colorpicker" value="#ffffff">
+                <button class="draw-btn colorpicker rainbow">RAINBOW</button>
+            </div>
+            <div class="opacity">
+                <div class="draw-options-title">Opacity</div>
+            </div>
+        </div>
         <div class="grid-container"></div>
         
     </body>
